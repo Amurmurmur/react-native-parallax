@@ -89,7 +89,8 @@ var ParallaxImage = React.createClass({
         {
           translateY:   scrollY.interpolate({
             inputRange:   [offset - height, offset + WINDOW_HEIGHT + height],
-            outputRange:  [-parallaxPadding, parallaxPadding]
+            outputRange:  [-parallaxPadding, parallaxPadding],
+            extrapolate:  'clamp',
           }),
           //extrapolate:  'clamp',
         },
