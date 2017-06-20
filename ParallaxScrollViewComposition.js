@@ -44,6 +44,14 @@ class ParallaxScrollViewComposition extends Component{
     };
   }
 
+  getScrollResponder() { 
+    return this._scrollView.getScrollResponder();
+  }
+
+  setNativeProps(props) {
+    this._scrollView.setNativeProps(props);
+  }
+
   componentWillMount(){
     this.onParallaxScroll = Animated.event(
       [{ nativeEvent: {contentOffset: {y: this.state.scrollY}} }],
@@ -64,7 +72,7 @@ class ParallaxScrollViewComposition extends Component{
       <ScrollComponent
         scrollEventThrottle={16}
         onScroll={handleScroll}
-        ref={function(scrollView) { this.scrollView = scrollView; }.bind(this)}
+        ref={function(scrollView) { this._scrollView = scrollView; }.bind(this)}
         {...props}
       >
         {children}
